@@ -41,6 +41,26 @@ public class CatTest {
     }
 
     @Test
+    void hashCodeTest() {
+        Cat cat1 = new Cat("black", 10, "persian");
+        Cat cat2 = new Cat("white", 8, "persian");
+        int code1 = cat1.hashCode();
+        int code2 = cat2.hashCode();
+        Assertions.assertEquals(code1, code2);
+        Assertions.assertEquals(cat1.hashCode(), cat2.hashCode());
+    }
+
+    @Test
+    void hashCodeTestNotEqual() {
+        Cat cat1 = new Cat("black", 10, "persian");
+        Cat cat2 = new Cat("white", 8, "syrian");
+        int code1 = cat1.hashCode();
+        int code2 = cat2.hashCode();
+        Assertions.assertNotEquals(code1, code2);
+        Assertions.assertNotEquals(cat1.hashCode(), cat2.hashCode());
+
+    }
+    @Test
     void dayTesting() {
         Cat cat1 = new Cat("black", 10, "persian");
         String monday = cat1.whatCatIsDoing(DayOfWeek.MONDAY);
