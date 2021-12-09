@@ -10,18 +10,30 @@ public class Cat extends Predator {
         this.breed = breed;
     }
 
-    @Override
-    public void sleep() {
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 
     @Override
-    public void hunt() {
+    public String sleep() {
+        return "Cat is sleeping";
     }
 
-    public void doingTigidik() {
+    @Override
+    public String hunt() {
+        return "Cat is hunting";
     }
 
-    public void lickBalls() {
+    public String doingTigidik() {
+        return "Cat is doing Tigidik";
+    }
+
+    public String lickBalls() {
+        return "Cat is licking balls";
     }
 
     @Override
@@ -29,7 +41,7 @@ public class Cat extends Predator {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Cat)) {
+        if (!(o instanceof Cat) || o == null) {
             return false;
         }
         Cat cat = (Cat) o;
@@ -41,12 +53,20 @@ public class Cat extends Predator {
         return 29 * Objects.hash(breed);
     }
 
-    public void whatCatIsDoing(DayOfWeek dayOfWeek) {
+    public String whatCatIsDoing(DayOfWeek dayOfWeek) {
         switch (dayOfWeek) {
-            case MONDAY, WEDNESDAY, FRIDAY -> System.out.println("On " + dayOfWeek + " cat is sleeping");
-            case TUESDAY, THURSDAY, SATURDAY -> System.out.println("On " + dayOfWeek + " cat is hunting");
-            case SUNDAY -> System.out.println("On " + dayOfWeek + " cat is doing ТЫГЫДЫК");
-            default -> System.out.println("Cat is licking balls");
+            case MONDAY, WEDNESDAY, FRIDAY -> {
+                return sleep();
+            }
+            case TUESDAY, THURSDAY, SATURDAY -> {
+                return hunt();
+            }
+            case SUNDAY -> {
+                return doingTigidik();
+            }
+            default -> {
+                return lickBalls();
+            }
         }
     }
 }

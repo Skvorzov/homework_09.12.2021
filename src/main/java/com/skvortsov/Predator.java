@@ -1,6 +1,7 @@
 package com.skvortsov;
 
 public abstract class Predator {
+
     private String color;
     private int weight;
 
@@ -9,7 +10,23 @@ public abstract class Predator {
         this.weight = weight;
     }
 
-    public abstract void sleep();
+    public abstract String sleep();
 
-    public abstract void hunt();
+    public abstract String hunt();
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }
